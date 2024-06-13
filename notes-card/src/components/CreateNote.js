@@ -1,22 +1,27 @@
 import React from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 
-const CreateNote = () => {
+const CreateNote = ({ handleText, addNote, inputText }) => {
+    const charLimit = 100;
+    const charLeft = charLimit - inputText.length;
   return (
     <div className='note'>
-        <textarea cols={10}
+        <textarea 
+            cols={10}
             rows={5}
+            value={inputText}
             placeholder='Type....'
-            maxLength={100}
+            maxLength={charLimit}
+            onChange={handleText}
         ></textarea>
         <div className='note__footer'>
-            <span className='label'>100 left</span>
-            <button className='note__save'>Save</button>
+            <span className='label'>{charLeft} left</span>
+            <button className='note__save' onClick={addNote}>Save</button>
         </div>
         <LinearProgress
             className='char_progress'
             variant='determinate'  
-            value={50} 
+            value={charLeft} 
         />
     </div>
   )

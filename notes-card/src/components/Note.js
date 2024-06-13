@@ -1,14 +1,17 @@
 import React from 'react'
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
-const Note = () => {
+const Note = ({text, id, deleteNote}) => {
   return (
     <div className='note'>
         <div className='note__body'>
-            Note
+            {text}
         </div>
         <div className='note__footer' style={{ justifyContent: "flex-end"}}>
-            <DeleteForeverOutlinedIcon className='note__delete'/>
+            <DeleteForeverOutlinedIcon
+                className='note__delete'
+                onClick={() => deleteNote(id)}
+            />
         </div>
     </div>
   )
